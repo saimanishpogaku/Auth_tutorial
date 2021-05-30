@@ -147,6 +147,8 @@ router.put('/manage/user', async (req,res,next) => {
         /**
          * update query is returning only older data but not updated data
          * so due to this we are again making a select query to show updated results 
+         we can use 3rd optional parameter {new:true} on User.findByIdAndUpdate(id, data) 
+         instead of again quering for updated data. 
         */
         userDetails = await User.findById(id).select({"password":0,"__v":0});
         delete output.message;
